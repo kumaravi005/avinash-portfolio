@@ -115,7 +115,7 @@ function Reveal({ children, delay = 0, className = "" }) {
 
 export default function Portfolio() {
   const [dark, setDark] = useState(true);
-  const [menuOpen, setMenuOpen] = useState(false);
+  //const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
 
   const sections = ["hero", "about", "skills", "experience", "projects", "education", "contact"];
@@ -134,7 +134,7 @@ export default function Portfolio() {
 
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    setMenuOpen(false);
+    //setMenuOpen(false);
   };
 
   const accent = "#2563EB";
