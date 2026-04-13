@@ -92,7 +92,7 @@ function useScrollReveal() {
     );
     if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
-  }, []);
+  }, [sections]);
   return [ref, visible];
 }
 
@@ -120,22 +120,22 @@ export default function Portfolio() {
 
   const sections = ["hero", "about", "skills", "experience", "projects", "education", "contact"];
 
-  useEffect(() => {
-    const handler = () => {
-      const scrollY = window.scrollY;
-      for (const id of sections) {
-        const el = document.getElementById(id);
-        if (el && scrollY >= el.offsetTop - 120) setActiveSection(id);
+ // eslint-disable-next-line
+useEffect(() => {
+  const handler = () => {
+    const scrollY = window.scrollY;
+    for (const id of sections) {
+      const el = document.getElementById(id);
+      if (el && scrollY >= el.offsetTop - 120) {
+        setActiveSection(id);
       }
-    };
-    window.addEventListener("scroll", handler);
-    return () => window.removeEventListener("scroll", handler);
-  }, []);
-
-  const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    //setMenuOpen(false);
+    }
   };
+
+  window.addEventListener("scroll", handler);
+  return () => window.removeEventListener("scroll", handler);
+
+}, []);
 
   const accent = "#2563EB";
   const accentLight = "#3B82F6";
